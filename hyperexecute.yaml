@@ -10,7 +10,7 @@ workflows:
     steps:
       - type: test
         name: Run Selenium Tests
-        runsOn: 
+        runsOn:
           - os: linux
             version: ubuntu-22.04
         testDiscovery:
