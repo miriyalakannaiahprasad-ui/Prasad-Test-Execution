@@ -1,13 +1,17 @@
 version: 0.1
+
 runson: linux
+
+autosplit: true
 
 concurrency: 2
 
-framework:
-  name: selenium
+env:
+  LT_USERNAME: $miriyalakannaiahprasad
+  LT_ACCESS_KEY: $LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
 
 pre:
-  - mvn clean install
+  - mvn clean install -DskipTests
 
-test:
-  - mvn test
+testRunner:
+  command: mvn test
