@@ -3,15 +3,16 @@ version: 0.1
 runson: linux
 
 autosplit: true
-
-concurrency: 2
+parallelism: 2
 
 env:
-  LT_USERNAME: $miriyalakannaiahprasad
-  LT_ACCESS_KEY: $LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
+  LT_USERNAME:miriyalakannaiahprasad
+  LT_ACCESS_KEY:LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
 
-pre:
-  - mvn clean install -DskipTests
+testDiscovery:
+  type: testng
+  mode: dynamic
+  command: mvn test -DskipTests
 
 testRunner:
   command: mvn test
