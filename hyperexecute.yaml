@@ -6,7 +6,7 @@ workflows:
     steps:
       - type: test
         name: Run Selenium Tests
-        runsOn:
+        runsOn:       # ✅ Correct spelling and casing
           os: linux
           version: ubuntu-22.04
         testDiscovery:
@@ -14,5 +14,5 @@ workflows:
           testPattern: "src/test/java/**/*.java"
         command: mvn clean test
         environment:
-          LT_USERNAME: miriyalakannaiahprasad
-          LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
+          LT_USERNAME: "miriyalakannaiahprasad"
+          LT_ACCESS_KEY: "LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8"
