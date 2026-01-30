@@ -1,18 +1,20 @@
 version: 0.1
-
-runson: linux
-
-autosplit: true
-parallelism: 2
-
-env:
-  LT_USERNAME: miriyalakannaiahprasad
-  LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
-
-testDiscovery:
-  type: testng
-  mode: dynamic
-  command: mvn test -DskipTests
-
-testRunner:
-  command: mvn test
+project:
+  name: Amazon Selenium Test
+  type: selenium-java
+  repository:
+    type: git
+    url: https://github.com/username/repo.git
+workflows:
+  - name: Amazon Selenium Workflow
+    main: true
+    steps:
+      - type: test
+        name: Run Selenium Tests
+        testDiscovery:
+          type: testng          # <-- REQUIRED for Java TestNG
+          testPattern: "src/test/java/**/*.java"
+        command: mvn clean test
+        environment:
+          LT_USERNAME: miriyalakannaiahprasad
+          LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
