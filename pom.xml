@@ -9,13 +9,13 @@
     <artifactId>amazon-selenium-java</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-</properties>
+    <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.8.3</version>
+   </dependency>
 
-    <dependencies>
+         <dependencies>
 
         <!-- Selenium -->
         <dependency>
