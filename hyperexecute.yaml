@@ -6,8 +6,8 @@ workflows:
     steps:
       - type: test
         name: Run Selenium Tests
-        runsOn:        # <- REQUIRED key
-          os: linux
+        os:
+          runsOn: linux
           version: ubuntu-22.04
         testDiscovery:
           type: testng
