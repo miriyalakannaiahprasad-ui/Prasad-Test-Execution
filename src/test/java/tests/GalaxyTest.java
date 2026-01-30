@@ -4,12 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.net.URL;
+import java.util.HashMap;
 
 public class GalaxyTest {
 
@@ -18,18 +18,23 @@ public class GalaxyTest {
     @BeforeClass
     public void setUp() throws Exception {
 
+        String username = System.getenv("LT_USERNAME");
+        String accessKey = System.getenv("LT_ACCESS_KEY");
+
+        System.out.println("LT_USERNAME = " + username);
+        System.out.println("LT_ACCESS_KEY = " + (accessKey != null ? "FOUND" : "MISSING"));
+
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browserName", "Chrome");
         caps.setCapability("browserVersion", "latest");
         caps.setCapability("platformName", "Windows 11");
 
-        caps.setCapability("build", "Amazon Selenium Assignment");
-        caps.setCapability("name", "Galaxy Test");
+        HashMap<String, Object> ltOptions = new HashMap<>();
+        ltOptions.put("build", "Amazon Selenium Assignment");
+        ltOptions.put("name", "Galaxy Test");
+        ltOptions.put("selenium_version", "4.8.3");
 
-        caps.setCapability("selenium_version", "4.8.3");
-
-        String username = System.getenv("LT_USERNAME");
-        String accessKey = System.getenv("LT_ACCESS_KEY");
+        caps.setCapability("LT:Options", ltOptions);
 
         driver = new RemoteWebDriver(
                 new URL("https://" + username + ":" + accessKey + "@hub.lambdatest.com/wd/hub"),
