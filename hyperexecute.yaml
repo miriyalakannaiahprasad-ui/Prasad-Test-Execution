@@ -7,7 +7,7 @@ workflows:
       - type: test
         name: Run Selenium Tests
         os:
-          runsOn: linux        # ✅ must be exactly 'runsOn'
+          runsOn: linux       # <-- required by HyperExecute
           version: ubuntu-22.04
         testDiscovery:
           type: testng
