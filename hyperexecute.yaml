@@ -14,8 +14,8 @@ workflows:
       - type: test
         name: Run Selenium Tests
         runsOn: 
-          os: linux       # Specify the OS to run your tests
-          version: ubuntu-22.04
+          - os: linux       # Must be a list
+            version: ubuntu-22.04
         testDiscovery:
           type: testng
           testPattern: "src/test/java/**/*.java"
