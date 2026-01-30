@@ -1,0 +1,14 @@
+version: 0.1
+runson: linux
+
+autosplit: true
+concurrency: 2
+
+framework:
+  name: selenium
+
+pre:
+  - mvn clean install
+
+test:
+  - mvn test
