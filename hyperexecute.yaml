@@ -1,18 +1,23 @@
 version: 0.1
+
 project:
   name: Amazon Selenium Test
   type: selenium-java
   repository:
     type: git
     url: https://github.com/username/repo.git
+
 workflows:
   - name: Amazon Selenium Workflow
     main: true
     steps:
       - type: test
         name: Run Selenium Tests
+        runsOn: 
+          os: linux       # Specify the OS to run your tests
+          version: ubuntu-22.04
         testDiscovery:
-          type: testng          # <-- REQUIRED for Java TestNG
+          type: testng
           testPattern: "src/test/java/**/*.java"
         command: mvn clean test
         environment:
