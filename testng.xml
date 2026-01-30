@@ -1,13 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Amazon Tests Suite" parallel="tests" thread-count="2">
+<suite name="Amazon Suite" parallel="tests" thread-count="2">
+
     <test name="iPhone Test">
         <classes>
-            <class name="tests.iPhoneTest"/>
+            <class name="tests.AmazonIphoneTest"/>
         </classes>
     </test>
+
     <test name="Galaxy Test">
         <classes>
-            <class name="tests.GalaxyTest"/>
+            <class name="tests.AmazonGalaxyTest"/>
         </classes>
     </test>
+
 </suite>
