@@ -7,12 +7,17 @@ workflows:
       - type: test
         name: Run Selenium Tests
         os:
-          runsOn: linux       # <-- required by HyperExecute
+          runson: linux
           version: ubuntu-22.04
+
         testDiscovery:
           type: testng
-          testPattern: "src/test/java/**/*.java"
-        command: mvn clean test
+          mode: static
+          command: mvn test
+
+        execution:
+          command: mvn clean test
+
         environment:
-          LT_USERNAME: "miriyalakannaiahprasad"
-          LT_ACCESS_KEY: "LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8"
+          LT_USERNAME: miriyalakannaiahprasad
+          LT_ACCESS_KEY: ${LT_ACCESS_KEY}
