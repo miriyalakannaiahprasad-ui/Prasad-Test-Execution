@@ -1,23 +1,17 @@
 version: 0.1
 
-workflows:
-  - name: Amazon Selenium Workflow
-    main: true
-    steps:
-      - type: test
-        name: Run Selenium Tests
-        os:
-          runson: linux
-          version: ubuntu-22.04
+runson: linux
 
-        testDiscovery:
-          type: testng
-          mode: static
-          command: mvn test
+autosplit: true
 
-        execution:
-          command: mvn clean test
+testDiscovery:
+  type: testng
+  mode: static
+  command: mvn test
 
-        environment:
-          LT_USERNAME: miriyalakannaiahprasad
-          LT_ACCESS_KEY: ${LT_ACCESS_KEY}
+execution:
+  command: mvn clean test
+
+env:
+  LT_USERNAME: miriyalakannaiahprasad
+  LT_ACCESS_KEY: LT_uRqmGNOWh8KsNuL7OWlWvqfHpDwH1ICNbc7cCqzQzA1Augc
