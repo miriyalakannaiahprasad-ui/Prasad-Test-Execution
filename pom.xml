@@ -39,10 +39,9 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <useFile>false</useFile>  <!-- console output required -->
+                    <useFile>false</useFile> <!-- Ensures console output is used -->
                     <reportFormat>brief</reportFormat>
                     <trimStackTrace>true</trimStackTrace>
-                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
