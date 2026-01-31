@@ -8,25 +8,24 @@ env:
 
 runson: linux
 
+# Pre steps
 pre:
-  - name: "Clone repo"
-    steps:
-      - run: git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
-      - run: echo "Pre steps completed"
+  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
+  - echo "Pre steps completed"
 
+# Test scenarios (two separate scenarios)
 test:
-  - name: "Run Amazon iPhone Test"
-    steps:
-      - run: cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.AmazonIphoneTest test
-      - run: echo "iPhone test completed"
+  - name: Run Amazon iPhone Test
+    commands:
+      - cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.AmazonIphoneTest test
+      - echo "iPhone test completed"
 
-  - name: "Run Samsung Galaxy Test"
-    steps:
-      - run: cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.GalaxyTest test
-      - run: echo "Galaxy test completed"
+  - name: Run Samsung Galaxy Test
+    commands:
+      - cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.GalaxyTest test
+      - echo "Galaxy test completed"
 
+# Post steps
 post:
-  - name: "Clean project"
-    steps:
-      - run: cd Prasad-Test-Execution && echo "Post steps executed"
-      - run: cd Prasad-Test-Execution && mvn clean
+  - cd Prasad-Test-Execution && echo "Post steps executed"
+  - cd Prasad-Test-Execution && mvn clean
