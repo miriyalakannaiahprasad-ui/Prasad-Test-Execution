@@ -2,19 +2,10 @@ version: 0.1
 
 runson: linux
 
-autosplit: true
 concurrency: 2
 
 pre:
   - mvn clean compile
 
-testDiscovery:
-  type: raw
-  command: find src/test/java -name "*Test.java"
-
-testRunner:
-  command: mvn test
-
-env:
-  LT_USERNAME: miriyalakannaiahprasad
-  LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
+run:
+  - mvn test
