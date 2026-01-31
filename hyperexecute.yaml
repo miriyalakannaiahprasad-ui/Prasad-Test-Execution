@@ -14,14 +14,16 @@ pre:
 
 test:
   - |
-    # Run tests in the same shell session
+    # Run tests in same shell session so scenarios are detected
     cd Prasad-Test-Execution
-    # Ensure testng.xml exists in repo root
+
+    # Verify testng.xml exists
     if [ ! -f testng.xml ]; then
       echo "ERROR: testng.xml not found in repo root"
       exit 1
     fi
-    # Run Maven in batch mode with console output
+
+    # Run Maven in batch mode so HyperExecute can parse scenarios
     mvn clean test -B
     echo "Tests completed"
 
