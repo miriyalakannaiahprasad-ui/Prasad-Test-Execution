@@ -14,7 +14,6 @@ pre:
 
 test:
   - |
-    # Run tests in the same shell session
     cd Prasad-Test-Execution
 
     # Verify testng.xml exists
@@ -23,8 +22,8 @@ test:
       exit 1
     fi
 
-    # Run Maven in batch mode, console output enabled
-    mvn clean test -B
+    # Run Maven tests in batch mode with console output for HyperExecute
+    mvn clean test -B -Dsurefire.useFile=false
 
     echo "Tests completed"
 
