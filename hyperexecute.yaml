@@ -1,24 +1,27 @@
-version: 0.1
+version: "0.1"
 
-runson:
-  os: linux
+runson: linux
 
 autosplit: true
-parallelism: 2
+concurrency: 2
 
 framework:
   name: testng
 
 testDiscovery:
   type: raw
+  mode: dynamic
   command: |
-    echo src/test/java/tests/AmazonGalaxyTest.java
+    find src/test/java -name "*Test.java"
 
-testRunner:
-  command: |
-    mvn clean test -DsuiteXmlFile=testng.xml
+testRunnerCommand: |
+  mvn clean test -DsuiteXmlFile=testng.xml
 
 pre:
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - cd Prasad-Test-Execution
   - mvn -version
+
+env:
+  LT_USERNAME: "miriyalakannaiahprasad"
+  LT_ACCESS_KEY: "LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8"
