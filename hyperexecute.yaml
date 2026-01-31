@@ -1,6 +1,6 @@
 version: 0.1
 
-globalTimeout: 1200
+globalTimeout: 1200  # 20 minutes
 
 env:
   LT_USERNAME: miriyalakannaiahprasad
@@ -9,24 +9,24 @@ env:
 runson: linux
 
 pre:
-  - echo "Pre steps started"
-  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
-  - echo "Pre steps completed"
+  - name: "Clone repo"
+    steps:
+      - run: git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
+      - run: echo "Pre steps completed"
 
 test:
   - name: "Run Amazon iPhone Test"
     steps:
-      - run: cd Prasad-Test-Execution
-      - run: mvn -B -Dsurefire.useFile=false -Dtest=tests.AmazonIphoneTest test
+      - run: cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.AmazonIphoneTest test
       - run: echo "iPhone test completed"
 
   - name: "Run Samsung Galaxy Test"
     steps:
-      - run: cd Prasad-Test-Execution
-      - run: mvn -B -Dsurefire.useFile=false -Dtest=tests.GalaxyTest test
+      - run: cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.GalaxyTest test
       - run: echo "Galaxy test completed"
 
 post:
-  - cd Prasad-Test-Execution
-  - echo "Post steps executed"
-  - mvn clean
+  - name: "Clean project"
+    steps:
+      - run: cd Prasad-Test-Execution && echo "Post steps executed"
+      - run: cd Prasad-Test-Execution && mvn clean
