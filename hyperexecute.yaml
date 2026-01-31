@@ -15,8 +15,8 @@ pre:
 
 # Test scenarios
 test:
-  - cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.AmazonIphoneTest test
-  - cd Prasad-Test-Execution && mvn -B -Dsurefire.useFile=false -Dtest=tests.GalaxyTest test
+  - cd Prasad-Test-Execution && mvn -B test -DsuiteXmlFile=testng.xml -Dtest=tests.AmazonIphoneTest
+  - cd Prasad-Test-Execution && mvn -B test -DsuiteXmlFile=testng.xml -Dtest=tests.GalaxyTest
 
 # Post steps
 post:
