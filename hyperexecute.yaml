@@ -4,11 +4,6 @@ runson: linux
 
 autosplit: true
 
-testDiscovery:
-  type: maven
-  mode: dynamic
-  command: mvn test
-
 execution:
   command: mvn clean test
 
