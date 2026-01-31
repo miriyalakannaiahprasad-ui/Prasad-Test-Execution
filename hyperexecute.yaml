@@ -1,6 +1,6 @@
 version: 0.1
 
-globalTimeout: 1200  # 20 minutes in seconds
+globalTimeout: 1200  # 20 minutes
 
 env:
   LT_USERNAME: miriyalakannaiahprasad
@@ -14,14 +14,20 @@ pre:
 
 test:
   - |
-    # Run tests in one shell session so HyperExecute parses scenarios
+    # Run tests in the same shell session
     cd Prasad-Test-Execution
+    # Ensure testng.xml exists in repo root
+    if [ ! -f testng.xml ]; then
+      echo "ERROR: testng.xml not found in repo root"
+      exit 1
+    fi
+    # Run Maven in batch mode with console output
     mvn clean test -B
     echo "Tests completed"
 
 post:
   - |
     # Post steps
-    echo "Post steps executed"
     cd Prasad-Test-Execution
+    echo "Post steps executed"
     mvn clean
