@@ -8,17 +8,21 @@ env:
 
 runson: linux
 
+# Pre steps
 pre:
+  - rm -rf Prasad-Test-Execution
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - echo "Pre steps completed"
 
-# Set the repo as working directory
+# Set working directory
 workingDirectory: Prasad-Test-Execution
 
+# Test scenarios
 test:
   - mvn -B test -DsuiteXmlFile=testng.xml -Dtest=tests.AmazonIphoneTest
   - mvn -B test -DsuiteXmlFile=testng.xml -Dtest=tests.GalaxyTest
 
+# Post steps
 post:
   - echo "Post steps executed"
   - mvn clean
