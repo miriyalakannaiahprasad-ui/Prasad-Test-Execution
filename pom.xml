@@ -38,9 +38,16 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
+                    <!-- Ensure TestNG suite is picked up -->
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    
+                    <!-- Enable HyperExecute-friendly reporting -->
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    <useFile>false</useFile>
+                    <reportFormat>brief</reportFormat>
+                    <trimStackTrace>true</trimStackTrace>
                 </configuration>
             </plugin>
         </plugins>
