@@ -15,7 +15,10 @@ pre:
 
 test:
   - cd Prasad-Test-Execution
-  - mvn test
+  - mvn -B test  # -B for batch mode so HyperExecute can parse output
+  - echo "Tests completed"
 
 post:
   - echo "Post steps executed"
+  - cd Prasad-Test-Execution
+  - mvn clean
