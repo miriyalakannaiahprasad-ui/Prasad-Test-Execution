@@ -10,15 +10,19 @@ runson: linux
 
 pre:
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
-  - cd Prasad-Test-Execution
-  - mvn clean compile
+  - echo "Pre steps completed"
 
 test:
-  - cd Prasad-Test-Execution
-  - mvn -B test  # -B for batch mode so HyperExecute can parse output
-  - echo "Tests completed"
+  - |
+    # Run tests in one shell session to preserve directory
+    cd Prasad-Test-Execution
+    mvn clean compile
+    mvn test -B
+    echo "Tests completed"
 
 post:
-  - echo "Post steps executed"
-  - cd Prasad-Test-Execution
-  - mvn clean
+  - |
+    # Post steps
+    echo "Post steps executed"
+    cd Prasad-Test-Execution
+    mvn clean
