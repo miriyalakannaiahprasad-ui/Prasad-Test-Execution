@@ -14,10 +14,9 @@ pre:
 
 test:
   - |
-    # Run tests in one shell session to preserve directory
+    # Run tests in one shell session so HyperExecute parses scenarios
     cd Prasad-Test-Execution
-    mvn clean compile
-    mvn test -B
+    mvn clean test -B
     echo "Tests completed"
 
 post:
