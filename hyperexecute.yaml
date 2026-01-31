@@ -2,20 +2,28 @@ version: 0.1
 
 runson: linux
 
-autosplit: true
-
-framework:
-  name: testng
+globalTimeout: 1200
 
 env:
-  LT_USERNAME: miriyalakannaiahprasad
-  LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
+  LT_USERNAME: ${LT_USERNAME}
+  LT_ACCESS_KEY: ${LT_ACCESS_KEY}
 
 pre:
-  - echo "Pre steps completed"
+  - rm -rf Prasad-Test-Execution
+  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
+  - cd Prasad-Test-Execution
+  - mvn clean compile
+
+testDiscovery:
+  type: testng
+  mode: dynamic
+  command: mvn test -DsuiteXmlFile=testng.xml
+  workingDirectory: Prasad-Test-Execution
 
 test:
-  - mvn clean test -DsuiteXmlFile=testng.xml
+  - cd Prasad-Test-Execution
+  - mvn test -DsuiteXmlFile=testng.xml
 
 post:
-  - echo "Post steps executed"
+  - cd Prasad-Test-Execution
+  - mvn clean
