@@ -1,32 +1,48 @@
-version: 0.1
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-globalTimeout: 1200
+  <modelVersion>4.0.0</modelVersion>
 
-env:
-  LT_USERNAME: miriyalakannaiahprasad
-  LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
+  <groupId>com.amazon.tests</groupId>
+  <artifactId>amazon-selenium-java</artifactId>
+  <version>1.0-SNAPSHOT</version>
 
-runson: linux
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
 
-pre:
-  - echo "Pre steps started"
-  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
-  - echo "Pre steps completed"
+  <dependencies>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.8.3</version>
+    </dependency>
 
-test:
-  - name: "Run Amazon iPhone Test"
-    steps:
-      - run: cd Prasad-Test-Execution
-      - run: mvn -B -Dsurefire.useFile=false -Dtest=tests.AmazonIphoneTest test
-      - run: echo "iPhone test completed"
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.8.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-  - name: "Run Samsung Galaxy Test"
-    steps:
-      - run: cd Prasad-Test-Execution
-      - run: mvn -B -Dsurefire.useFile=false -Dtest=tests.GalaxyTest test
-      - run: echo "Galaxy test completed"
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.1.2</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+          <useFile>false</useFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
-post:
-  - cd Prasad-Test-Execution
-  - echo "Post steps executed"
-  - mvn clean
+</project>
