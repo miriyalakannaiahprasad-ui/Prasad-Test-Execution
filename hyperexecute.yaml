@@ -1,18 +1,18 @@
 version: "0.1"
 
-runson: linux
+runson:
+  os: linux
 
 autosplit: false
-
-env:
-  LT_USERNAME: miriyalakannaiahprasad
-  LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
 
 pre:
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - cd Prasad-Test-Execution
   - mvn clean compile
 
-run:
+test:
   - cd Prasad-Test-Execution
   - mvn test
+
+post:
+  - echo "Test execution completed"
