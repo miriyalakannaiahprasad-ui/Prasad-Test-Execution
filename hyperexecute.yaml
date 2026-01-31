@@ -1,6 +1,6 @@
 version: 0.1
 
-globalTimeout: 1200  # 20 minutes
+globalTimeout: 1200
 
 env:
   LT_USERNAME: miriyalakannaiahprasad
@@ -9,26 +9,24 @@ env:
 runson: linux
 
 pre:
+  - echo "Pre steps started"
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - echo "Pre steps completed"
 
 test:
-  - |
-    cd Prasad-Test-Execution
+  - name: "Run Amazon iPhone Test"
+    steps:
+      - run: cd Prasad-Test-Execution
+      - run: mvn -B -Dsurefire.useFile=false -Dtest=tests.AmazonIphoneTest test
+      - run: echo "iPhone test completed"
 
-    # Verify testng.xml exists
-    if [ ! -f testng.xml ]; then
-      echo "ERROR: testng.xml not found"
-      exit 1
-    fi
-
-    # Run Maven tests in batch mode with console output for HyperExecute
-    mvn clean test -B -Dsurefire.useFile=false
-
-    echo "Tests completed"
+  - name: "Run Samsung Galaxy Test"
+    steps:
+      - run: cd Prasad-Test-Execution
+      - run: mvn -B -Dsurefire.useFile=false -Dtest=tests.GalaxyTest test
+      - run: echo "Galaxy test completed"
 
 post:
-  - |
-    cd Prasad-Test-Execution
-    echo "Post steps executed"
-    mvn clean
+  - cd Prasad-Test-Execution
+  - echo "Post steps executed"
+  - mvn clean
