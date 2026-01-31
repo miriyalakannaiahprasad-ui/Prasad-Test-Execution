@@ -1,7 +1,6 @@
 version: 0.1
 
-runson:
-  os: linux
+runson: linux
 
 autosplit: true
 concurrency: 2
@@ -19,4 +18,4 @@ pre:
 testDiscovery:
   type: raw
   mode: dynamic
-  command: mvn -q -Dtest=GalaxyTest,iPhoneTest test
+  command: mvn test
