@@ -3,7 +3,6 @@
 
     <test name="Amazon Tests">
         <classes>
-            <!-- Make sure class names match Java class names exactly -->
             <class name="tests.AmazonIphoneTest"/>
             <class name="tests.GalaxyTest"/>
         </classes>
