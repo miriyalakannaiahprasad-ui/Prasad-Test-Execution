@@ -6,8 +6,8 @@ autosplit: true
 
 testDiscovery:
   type: testng
-  mode: static
-  command: mvn test
+  mode: dynamic
+  command: mvn -q -DskipTests=false test
 
 execution:
   command: mvn clean test
