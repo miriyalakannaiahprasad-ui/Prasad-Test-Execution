@@ -3,16 +3,14 @@ version: 0.1
 runson: linux
 
 autosplit: true
-maxRetries: 0
 concurrency: 2
+
+pre:
+  - mvn clean compile
 
 testDiscovery:
   type: raw
-  mode: dynamic
-  command: mvn -q -DskipTests compile
-  testDiscoveryResult:
-    type: regex
-    pattern: ".*Test.java"
+  command: find src/test/java -name "*Test.java"
 
 testRunner:
   command: mvn test
@@ -20,7 +18,3 @@ testRunner:
 env:
   LT_USERNAME: miriyalakannaiahprasad
   LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
-
-pre:
-  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
-  - cd Prasad-Test-Execution
