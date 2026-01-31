@@ -1,6 +1,6 @@
 version: 0.1
 
-globalTimeout: 1200
+globalTimeout: 1200  # 20 minutes
 
 env:
   LT_USERNAME: miriyalakannaiahprasad
