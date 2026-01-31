@@ -1,8 +1,12 @@
-version: "0.1"
+version: 0.1
+
+globalTimeout: 20m
+
+env:
+  LT_USERNAME: miriyalakannaiahprasad
+  LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
 
 runson: linux
-
-autosplit: false
 
 pre:
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
