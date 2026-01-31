@@ -1,17 +1,22 @@
 version: 0.1
 
-runson: linux
+runson:
+  os: linux
+
+autosplit: true
+concurrency: 2
+
+framework:
+  name: testng
+  args:
+    testngXmlFile: testng.xml
 
 pre:
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - cd Prasad-Test-Execution
-  - mvn -version
+  - mvn clean compile
 
-execution:
-  command:
-    - cd Prasad-Test-Execution
-    - mvn clean test
-
-env:
-  LT_USERNAME: miriyalakannaiahprasad
-  LT_ACCESS_KEY: LT_uRqmGNOWh8KsNuL7OWlWvqfHpDwH1ICNbc7cCqzQzA1Augc
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: mvn -q -Dtest=GalaxyTest,iPhoneTest test
