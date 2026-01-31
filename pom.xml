@@ -15,14 +15,12 @@
     </properties>
 
     <dependencies>
-        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.8.3</version>
         </dependency>
 
-        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -41,7 +39,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <useFile>false</useFile>
+                    <useFile>false</useFile>  <!-- console output required -->
                     <reportFormat>brief</reportFormat>
                     <trimStackTrace>true</trimStackTrace>
                     <testFailureIgnore>false</testFailureIgnore>
