@@ -2,8 +2,6 @@ version: 0.1
 
 runson: linux
 
-autosplit: true
-
 execution:
   command: mvn clean test
 
