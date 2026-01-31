@@ -1,18 +1,25 @@
-version: "0.1"
+version: 0.1
 
-runson:
-  os: linux
+runson: linux
 
-autosplit: false
+autosplit: true
+
+concurrency: 2
+
+framework:
+  name: testng
 
 pre:
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - cd Prasad-Test-Execution
   - mvn clean compile
 
-test:
-  - cd Prasad-Test-Execution
-  - mvn test
+testDiscovery:
+  type: raw
+  command: |
+    echo "src/test/java/tests/AmazonGalaxyTest.java"
+    echo "src/test/java/tests/AmazonIphoneTest.java"
 
-post:
-  - echo "Test execution completed"
+testRunnerCommand: |
+  cd Prasad-Test-Execution
+  mvn test -DsuiteXmlFile=testng.xml
