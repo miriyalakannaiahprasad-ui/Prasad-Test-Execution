@@ -1,27 +1,17 @@
-version: "0.1"
+version: 0.1
 
 runson: linux
 
-autosplit: true
-concurrency: 2
+autosplit: false
 
-framework:
-  name: testng
-
-testDiscovery:
-  type: raw
-  mode: dynamic
-  command: |
-    find src/test/java -name "*Test.java"
-
-testRunnerCommand: |
-  mvn clean test -DsuiteXmlFile=testng.xml
+env:
+  LT_USERNAME: miriyalakannaiahprasad
+  LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
 
 pre:
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - cd Prasad-Test-Execution
-  - mvn -version
+  - mvn clean compile
 
-env:
-  LT_USERNAME: "miriyalakannaiahprasad"
-  LT_ACCESS_KEY: "LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8"
+test:
+  - cd Prasad-Test-Execution && mvn test
