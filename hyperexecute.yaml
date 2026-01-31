@@ -1,11 +1,24 @@
 version: 0.1
 
-runson: linux
+runson:
+  os: linux
 
-concurrency: 2
+autosplit: true
+parallelism: 2
+
+framework:
+  name: testng
+
+testDiscovery:
+  type: raw
+  command: |
+    echo src/test/java/tests/AmazonGalaxyTest.java
+
+testRunner:
+  command: |
+    mvn clean test -DsuiteXmlFile=testng.xml
 
 pre:
-  - mvn clean compile
-
-run:
-  - mvn test
+  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
+  - cd Prasad-Test-Execution
+  - mvn -version
