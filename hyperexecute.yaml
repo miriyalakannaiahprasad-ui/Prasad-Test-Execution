@@ -1,4 +1,4 @@
-version: 0.1
+version: "0.1"
 
 runson: linux
 
@@ -13,5 +13,6 @@ pre:
   - cd Prasad-Test-Execution
   - mvn clean compile
 
-test:
-  - cd Prasad-Test-Execution && mvn test
+run:
+  - cd Prasad-Test-Execution
+  - mvn test
