@@ -1,18 +1,21 @@
 version: 0.1
 
-globalTimeout: 1200
+runson: linux
+
+autosplit: true
+
+framework:
+  name: testng
 
 env:
   LT_USERNAME: miriyalakannaiahprasad
   LT_ACCESS_KEY: LT_zSJ1auyDTvYdGijmNUwJrx80QnIe02PahM54NTzZsq0I1U8
 
-runson: linux
-
 pre:
   - echo "Pre steps completed"
 
 test:
-  - mvn -B test -DsuiteXmlFile=testng.xml
+  - mvn clean test -DsuiteXmlFile=testng.xml
 
 post:
   - echo "Post steps executed"
