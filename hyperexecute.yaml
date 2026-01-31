@@ -9,19 +9,13 @@ env:
 runson: linux
 
 pre:
-  - name: Clone Repo
-    run: git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
-  - name: Change Directory
-    run: cd Prasad-Test-Execution
-  - name: Compile Project
-    run: mvn clean compile
+  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
+  - cd Prasad-Test-Execution
+  - mvn clean compile
 
 test:
-  - name: Run Tests
-    run: |
-      cd Prasad-Test-Execution
-      mvn test
+  - cd Prasad-Test-Execution
+  - mvn test
 
 post:
-  - name: Post Cleanup
-    run: echo "Post steps executed"
+  - echo "Post steps executed"
