@@ -18,6 +18,7 @@ public class AmazonIphoneTest {
 
     @BeforeMethod
     public void setup() throws Exception {
+        // Setup LambdaTest capabilities
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName("Chrome");
         caps.setCapability("browserVersion", "latest");
@@ -31,7 +32,7 @@ public class AmazonIphoneTest {
                 caps
         );
 
-        // Optional: implicit wait to avoid element not found errors
+        // Implicit wait and maximize window
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
     }
@@ -46,25 +47,25 @@ public class AmazonIphoneTest {
         searchBox.sendKeys("iPhone");
         searchBox.sendKeys(Keys.ENTER);
 
-        // Wait briefly to let results load
+        // Wait briefly for results to load
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
-        // Click the first product
+        // Click the first product if available
         List<WebElement> products = driver.findElements(By.cssSelector("h2 a"));
-        if (products.size() > 0) {
+        if (!products.isEmpty()) {
             products.get(0).click();
         } else {
             System.out.println("No products found for iPhone.");
             return;
         }
 
-        // Get price and print
+        // Get the price and print it
         List<WebElement> prices = driver.findElements(By.cssSelector("span.a-price-whole"));
-        if (prices.size() > 0) {
+        if (!prices.isEmpty()) {
             String price = prices.get(0).getText();
             System.out.println("iPhone Price: " + price);
         } else {
