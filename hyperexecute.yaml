@@ -2,8 +2,15 @@ version: 0.1
 
 runson: linux
 
+pre:
+  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
+  - cd Prasad-Test-Execution
+  - mvn -version
+
 execution:
-  command: mvn clean test
+  command:
+    - cd Prasad-Test-Execution
+    - mvn clean test
 
 env:
   LT_USERNAME: miriyalakannaiahprasad
