@@ -10,7 +10,6 @@ runson: linux
 
 # Pre steps
 pre:
-  - rm -rf Prasad-Test-Execution
   - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - echo "Pre steps completed"
 
