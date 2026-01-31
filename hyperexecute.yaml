@@ -1,6 +1,6 @@
 version: 0.1
 
-globalTimeout: 1200  # 20 minutes
+globalTimeout: 1200
 
 env:
   LT_USERNAME: miriyalakannaiahprasad
@@ -8,20 +8,11 @@ env:
 
 runson: linux
 
-# Pre steps
 pre:
-  - git clone https://github.com/miriyalakannaiahprasad-ui/Prasad-Test-Execution.git
   - echo "Pre steps completed"
 
-# Set working directory
-workingDirectory: Prasad-Test-Execution
-
-# Test scenarios
 test:
-  - mvn -B test -DsuiteXmlFile=testng.xml -Dtest=tests.AmazonIphoneTest
-  - mvn -B test -DsuiteXmlFile=testng.xml -Dtest=tests.GalaxyTest
+  - mvn -B test -DsuiteXmlFile=testng.xml
 
-# Post steps
 post:
   - echo "Post steps executed"
-  - mvn clean
